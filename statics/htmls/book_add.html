@@ -1,0 +1,41 @@
+{{template "home.html" .}}
+
+
+{{define "content"}}
+    <h1 class="text-center">书籍添加</h1>
+    <form action="/book_add" method="post">
+        <p>
+            书名:
+            <input type="text" name="title" class="form-control">
+        </p>
+        <p>
+            价格:
+            <input type="text" name="price" class="form-control">
+        </p>
+        <p>
+            出版日期:
+            <input type="date" name="publish_date" value="2022-03-04" class="form-control">
+        </p>
+        <p>
+            出版社:
+            <select name="publisher_id" id="" class="form-control">
+                {{range $p := .publishers}}
+                    <option value="{{$p.Id}}">{{$p.Name}}</option>
+                {{end}}
+            </select>
+        </p>
+        <p>
+            作者:
+            <select name="authors_id" id="" multiple class="form-control">
+                {{range $a := .authors}}
+                    <option value="{{$a.Id}}">{{$a.Name}}</option>
+                {{end}}
+            </select>
+        </p>
+        <input type="submit" value="新增" class="btn btn-primary btn-block">
+
+
+    </form>
+   
+
+{{end}}

@@ -1,0 +1,78 @@
+{{template "home.html" .}}
+
+
+{{define "content"}}
+   <a href="/book_add" class="btn btn-success">添加</a>
+   <br>
+   <br>
+   <table class="table table-hover table-striped">
+       <thead>
+           <tr>
+               <th>ID</th>
+               <th>书名</th>
+               <th>价格</th>
+               <th>出版社</th>
+               <th>出版日期</th>
+               <th>作者</th>
+               <th>操作</th>
+           </tr>
+       </thead>
+       <tbody>
+           {{$publishers := .publishers}}
+           {{$authors := .authors}}
+           {{range $book := .books}}
+           <tr>
+                <td>{{$book.Id}}</td>  
+                <td>{{$book.Title}}</td>
+                <td>{{$book.Price}}</td>  
+                <td>
+                    {{range $p := $publishers}}
+                    {{if eq $book.PublisherId $p.Id}}
+                    {{$p.Name}}
+                    {{end}}
+                    {{end}}
+                </td>  
+                <td>{{$book.PublishDate}}</td>  
+                <td>
+                    {{range $author := $authors}} 
+                        {{if isIn $author.Id $book.Authors}}
+                            {{$author.Name }}
+                        {{end}}
+                    {{end}}
+                </td>  
+                <td>
+                    <a href="/book_edit/{{$book.Id}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                    <button class="btn btn-danger btn-xs" onclick="del({{$book.Id}})"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>
+                </td>
+           </tr>
+           {{end}}
+       </tbody>
+
+   </table>
+
+
+<script>
+    function del(id){
+        swal({
+            title: "温馨提示",
+            text: "您确认要删除该图书吗？",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                swal("删除成功!", {
+                icon: "success",
+                });
+                window.location.href = "/book_delete/" + id;
+            } else {
+                swal("取消删除!");
+            }
+            });
+
+    }
+
+</script>
+
+
+{{end}}

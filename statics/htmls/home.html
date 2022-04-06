@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./statics/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid" style="margin-top: 20px;">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Book Manage System</h3>
+                    </div>
+                    <div class="panel-body">
+                        {{block "content" .}}
+                            <div class="jumbotron">
+                                <h1>欢迎来到自学网最大的读书平台!</h1>
+                                <p>您想要的书籍全都有</p>
+                                <p><a class="btn btn-primary btn-lg" role="button" href="/book_list">点击阅读吧~</a></p>
+                            </div>
+                        {{end}}
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+    </div>
+</body>
+</html>
