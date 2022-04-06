@@ -1,3 +1,3 @@
-module bms2
+module bms
 
 go 1.16
